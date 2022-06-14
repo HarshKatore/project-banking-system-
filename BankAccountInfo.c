@@ -33,15 +33,15 @@ void IBFlist (int a,struct BankAccountHolder customer[]){
         if(customer[i].AccountBalance>1000000){
             printf("THE CUSTOMER NAMED %s IS A GOLDEN CUSTOMER.\n",customer[i].CustomerName);
         }
-        else if(500000<=customer[i].AccountBalance<=1000000){
+        else if (500000>customer[i].AccountBalance)
+        {    printf("THE CUSTOMER NAMED %s IS A GENERAL CUSTOMER.\n",customer[i].CustomerName);
+
+        }
+        else if(500000 < customer[i].AccountBalance < 1000000){
             printf("THE CUSTOMER NAMED %s IS A SILVER CUSTOMER.\n",customer[i].CustomerName);
 
         }
         
-        else 
-        {    printf("THE CUSTOMER NAMED %s IS A GENERAL CUSTOMER.\n",customer[i].CustomerName);
-
-        }
     }
     }
     void AccountType(int a,struct BankAccountHolder customer[])
@@ -72,20 +72,21 @@ void IBFlist (int a,struct BankAccountHolder customer[]){
        
     }
     void location(int a, struct BankAccountHolder customer[]){
-        int pin;
+        int L;
         printf("ENTER THE PIN-CODE TO GET LIST OF CUSTOMERS IN RESPECTIVE LOCATION:");
-        scanf("%d,&pin");
+        scanf("%d",&L);
                 printf("\nTHE LIST OF THE CUSTOMERS BELONGING TO THAT LOCATION IS AS FOLLOWS:\n");
                 for(int i=0;i<a;i++){
-            if(customer[i].PinCode==pin){
-                printf("%s",customer[i].CustomerName);
+            if(customer[i].PinCode==L){
+                puts(customer[i].CustomerName);
+                printf("\n");
             }
         }
     }
 void display(int a,struct BankAccountHolder customer[]){
-     printf("\n\n\tA/C NO.   \tNAME\tBALANCE  \tIBF STATUS  \tPIN-CODE  \tA/C TYPE\n");
+     
     for(int i=0;i<a;i++){
-    printf("\t%d   \t\t%s\t%d  \t%d              \t%d  \t%d\n",customer[i].AccountNumber,customer[i].CustomerName,customer[i].AccountBalance,customer[i].IBF,customer[i].PinCode,customer[i].AccountType);
+    printf("FOR CUSTOMER NO. %d\nA/C NO.:%d   \nNAME:%s\nBALANCE: %d  \nIBF STATUS:%d              \nPIN-CODE:%d  \nA/C TYPE:%d\n\n",i+1,customer[i].AccountNumber,customer[i].CustomerName,customer[i].AccountBalance,customer[i].IBF,customer[i].PinCode,customer[i].AccountType);
     }
     printf("\n\n");
 }
@@ -98,8 +99,9 @@ void  search(int a,struct BankAccountHolder customer[]){
     for(int i=0;i<a;i++){
         if(customer[i].AccountNumber==n){
              printf("THE DATA OF THE GIVEN ACCOUNT NUMBER IS AS FOLLOWS:");
-             printf("\n\n\tA/C NO.\tNAME\tBALANCE\tIBF STATUS\tPIN-CODE\tA/C TYPE\n");
-             printf("\t%d\t%s\t%d\t%d\t        %d        \t%d\n",customer[i].AccountNumber,customer[i].CustomerName,customer[i].AccountBalance,customer[i].IBF,customer[i].PinCode,customer[i].AccountType);
+              printf("\n REQUIRED CUSTOMER IS: \nA/C NO.:%d   \nNAME:%s\nBALANCE: %d  \nIBF STATUS:%d              \nPIN-CODE:%d  \nA/C TYPE:%d\n\n",customer[i].AccountNumber,customer[i].CustomerName,customer[i].AccountBalance,customer[i].IBF,customer[i].PinCode,customer[i].AccountType);
+             
+            
              flag++;
         }
         
